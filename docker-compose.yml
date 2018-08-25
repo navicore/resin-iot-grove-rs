@@ -1,0 +1,26 @@
+version: '2'
+# volumes: 
+#   mqttdata:
+services:
+  mqtt-broker:
+    build: ./mqtt-broker
+    expose:
+      - "1883"
+      - "9001"
+    privileged: true
+    restart: always
+    network_mode: host
+  mqtt-bridge-rs:
+    build: ./mqtt-bridge-rs
+    privileged: true
+    depends_on:
+      - mqtt-broker
+    restart: always
+    network_mode: host
+  tempmon-rs:
+    build: ./tempmon-rs
+    privileged: true
+    depends_on:
+      - mqtt-broker
+    restart: always
+    network_mode: host
