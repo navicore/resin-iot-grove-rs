@@ -24,3 +24,10 @@ services:
       - mqtt-broker
     restart: always
     network_mode: host
+  mqtt-heartbeat-rs:
+    build: ./mqtt-heartbeat-rs
+    privileged: true
+    depends_on:
+      - mqtt-broker
+    restart: always
+    network_mode: host
