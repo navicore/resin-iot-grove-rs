@@ -41,7 +41,7 @@ ENV OPENSSL_DIR=/usr
 # Build real app
 WORKDIR /build/app
 #RUN git clone https://github.com/navicore/tempmon-rs.git && cd tempmon-rs && git checkout tags/0.9.0 && cargo build --release
-RUN git clone https://github.com/navicore/tempmon-rs.git && cd tempmon-rs && cargo build --release
+RUN touch ./tmp/build-0001.tmp && git clone https://github.com/navicore/tempmon-rs.git && cd tempmon-rs && cargo build --release
 
 ################################################################################
 # Final image
