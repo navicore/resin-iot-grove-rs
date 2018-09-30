@@ -2,7 +2,7 @@
 # Base image
 ################################################################################
 
-FROM resin/%%RESIN_MACHINE_NAME%%-debian as base
+FROM resin/%%RESIN_MACHINE_NAME%%-edison-debian as base
 
 # use this in the arm6l vs arm7l vs arm8l issue below
 RUN echo "arch is %%RESIN_MACHINE_NAME%%"
