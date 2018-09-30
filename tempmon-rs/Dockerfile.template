@@ -126,5 +126,7 @@ WORKDIR /app
 COPY --from=builder /build/app/tempmon-rs/target/release/tempmon-rs .
 COPY --from=builder /build/app/tempmon-rs/config config/
 
+ENV INITSYSTEM on
+
 # Launch application
 CMD ["/app/tempmon-rs"]
