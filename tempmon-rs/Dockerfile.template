@@ -70,8 +70,7 @@ RUN set -x \
 
 
 # Update Shared Library Cache
-RUN echo "/usr/local/lib/i386-linux-gnu/" >> /etc/ld.so.conf \
-	&& ldconfig
+#RUN echo "/usr/local/lib/i386-linux-gnu/" >> /etc/ld.so.conf && ldconfig
 
 
 #############################################
@@ -126,7 +125,8 @@ WORKDIR /app
 COPY --from=builder /build/app/tempmon-rs/target/release/tempmon-rs .
 COPY --from=builder /build/app/tempmon-rs/config config/
 
-ENV INITSYSTEM on
+ENV INITSYSTEM=on
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Launch application
 CMD ["/app/tempmon-rs"]
